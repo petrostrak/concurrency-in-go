@@ -24,7 +24,7 @@ func main() {
 			}
 		}()
 	}
-
 	wg.Wait()
+
 	fmt.Printf("counter: %v\n", counter)
 }
