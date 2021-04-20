@@ -26,6 +26,7 @@ func generator(num ...int) <-chan int {
 // output on outbound channel
 func square(in <-chan int) <-chan int {
 	out := make(chan int)
+
 	go func() {
 		for n := range in {
 			out <- n * n
