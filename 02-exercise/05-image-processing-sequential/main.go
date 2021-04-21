@@ -15,7 +15,7 @@ import (
 
 type result struct {
 	srcImagePath   string
-	thumbnailImage *image.RGBA
+	thumbnailImage *image.NRGBA
 	err            error
 }
 
@@ -124,7 +124,7 @@ func processImage(done <-chan struct{}, paths <-chan string) <-chan *result {
 			thumbnailImage := imaging.Thumbnail(srcImage, 100, 100, imaging.Lanczos)
 
 			select {
-			case results <- &result{path, (*image.RGBA)(thumbnailImage), nil}:
+			case results <- &result{path, thumbnailImage, nil}:
 			case <-done:
 				return
 			}
